@@ -12,8 +12,8 @@ module.exports = {
             .setFooter(message.client.user.username, message.client.user.avatarURL())
             .setTimestamp()
             .setTitle(":wave: Je suis le BotLambda !")
-            .addField(":wrench: Version :", "1.1.0",false)
-            .addField(":pencil: Patch Note:", "- Ajout de la commande \"about\"\n- Ajout de la commande \"conversion\"\n- Patch de la commande \"userinfo\"", false)
+            .addField(":wrench: Version :", "1.2.0-dev",false)
+            .addField(":pencil: Patch Note:", "Je suis en cours de dev !", false)
             .addField(":sparkling_heart: Remerciements :", "Le Mocha, JIM",false)
             .setColor("00ffff");
         message.channel.send(embed)

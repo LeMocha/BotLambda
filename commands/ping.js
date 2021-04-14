@@ -8,7 +8,7 @@ module.exports = {
   usage: "",
   category: "information",
   execute(message) {
-    if (Math.random() <= 0.2) {
+    if (Math.random() <= 0.01) {
       const embed = new Discord.MessageEmbed()
       .setTitle("🔥 Oh ! Un hacker lambda a modifié mon code !")
       .setImage("https://i.gifer.com/XYkc.gif")
