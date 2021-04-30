@@ -18,7 +18,7 @@ module.exports = {
           Embed.setColor(message.guild.members.cache.get(message.author.id).displayHexColor);
           return message.channel.send(Embed);
       }
-      else if (member === undefined){
+      else if (member === undefined){z
           message.channel.send("Je ne trouve pas cet utilisateur.")
           return
       } else {
