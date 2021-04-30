@@ -8,6 +8,13 @@ module.exports = {
         
         if(message.type === "PINS_ADD") message.delete();
 
+        let crashlink = /([a-z0-9-.]+)?(https:\/\/)?(www\.)?([a-z0-9-.]+)?ColorfulRedFishingcat([a-z0-9-.]+)?/i;
+        if (crashlink.test(message)){
+            message.delete()
+            let User = message.guild.member(message.author)
+            User.send("Tu t'es cru plus malin que nous, mais c'est pas le cas... Sinon faillait que tout le monde utilise GNU/Linux, qui est invulnérable a ce bug").then(() => User.ban({reason: "COGIF-19 (dont woomy est vacinée !)"}))
+        }
+
         if (!message.content.startsWith(prefix) || message.author.bot) {
     
             try {
@@ -21,18 +28,17 @@ module.exports = {
                     else if (message.channel.id === "658438497614430249") { return }
                     else if(message.channel.parentID === "759784127552552970") { return }
                     else {
-                        message.channel.send(`Le partage de liens discord ne sont pas autorisés dans ce salon ${message.author}`)
+                        message.channel.send(`Le partage de liens discord n'est pas autorisé dans ce salon ${message.author}`)
                         message.delete();
                     }
                 }
             } catch {
-                console.log("Il est possible que je n'ai pas su déterminer si une pub discord / lien Tik Tok a été envoyé !")
+                console.log("Il est possible que je n'ai pas su déterminer si un lien discord / Tik Tok a été envoyé !")
             }
             return;
         }
     
         const args = message.content.slice(prefix.length).split(/ +/);
-        console.log(args)
         const commandName = args.shift().toLowerCase();
         if (!client.commands.has(commandName)) return;
     
@@ -43,7 +49,7 @@ module.exports = {
         const commandelogembed = new Discord.MessageEmbed()
             .setTitle(`:information_source: ${message.author.tag} A exécuté une commande !`)
             .addField(':speech_left: Contenu du message :', `${message.content}`, false)
-            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${message.author.id}\nChannel = ${message.channel.id}\`\`\``, false)
+            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${message.author.id}\nSalon = ${message.channel.id}\`\`\``, false)
             .addField(':bookmark_tabs: Salon :', `${message.channel.name}\n**=>** <#${message.channel.id}> `, true)
             .addField(':robot: Commande utilisée :', `${prefix}${commandName}`, true)
             .setTimestamp()

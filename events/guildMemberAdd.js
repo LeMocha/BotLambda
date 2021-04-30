@@ -19,7 +19,7 @@ module.exports = {
         .setTimestamp()
         .setTitle(`Hey ${member.user.username} ! Bienvenue sur le serveur de TechLambda :tada::hugging: ! !`)
         .setDescription(`Nous sommes désormais ${total} sur le serveur !`)
-        .setImage("https://media.giphy.com/media/3o7aDcS4fAE9gHUVkk/giphy.gif")
+        .setImage("https://media1.tenor.com/images/f898731211184dca06f52005d7d0a166/tenor.gif")
         .setColor("00ffff");
     channel.send(embed);
     member.roles.add('658439261372284958')

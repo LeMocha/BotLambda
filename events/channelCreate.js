@@ -16,9 +16,9 @@ module.exports = {
             .setTitle(`🔧 Un salon a été créé !`)
             .addField('⚙️ Type de salon :', `${channel.type}`, true)
             .addField('🗃️ Catégorie :', `${channel.parent}`, true)
-            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${executor.id}\nChannel = ${channel.id}\nParent = ${channel.parent.id}\`\`\``, false)
+            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${executor.id}\nCategorie = ${channel.id}\nParent = ${channel.parent.id}\`\`\``, false)
             .addField(':bookmark_tabs: Salon :', `${channel.name}`, true)
-            .addField(':robot: Suppr. par :', `${executor.username}#${executor.discriminator}`, true)
+            .addField(':robot: Créé par :', `${executor.username}#${executor.discriminator}`, true)
             .setTimestamp()
             .setColor(8359053)
         logchannel.send(logembed);

@@ -18,7 +18,7 @@ module.exports = {
         const logembed = new MessageEmbed()
             .setTitle(`:wastebasket: Un message a été supprimé !`)
             .addField(':speech_left: Contenu du message :', `${message.content}`, false)
-            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${authorid}\nChannel = ${message.channel.id}\`\`\``, false)
+            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${authorid}\nSalon = ${message.channel.id}\`\`\``, false)
             .addField(':bookmark_tabs: Salon :', `${message.channel.name}\n**=>** <#${message.channel.id}> `, true)
             .addField(':robot: Auteur du message :', `${authortag}`, true)
             .setTimestamp()

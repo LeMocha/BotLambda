@@ -16,7 +16,7 @@ module.exports = {
             .setTitle(`🚧 Un salon a été supprimé !`)
             .addField('⚙️ Type de salon :', `${channel.type}`, true)
             .addField('🗃️ Catégorie :', `${channel.parent}`, true)
-            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${executor.id}\nChannel = ${channel.id}\nParent = ${channel.parent.id}\`\`\``, false)
+            .addField(':label: ID :', `\`\`\`ini\nUtilisateur = ${executor.id}\nSalon = ${channel.id}\nCategorie = ${channel.parent.id}\`\`\``, false)
             .addField(':bookmark_tabs: Salon :', `${channel.name}`, true)
             .addField(':robot: Suppr. par :', `${executor.username}#${executor.discriminator}`, true)
             .setTimestamp()

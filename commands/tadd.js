@@ -24,7 +24,7 @@ module.exports = {
                 message.channel.send(`Tu as bien ajouté ${user} à ${chan} !`).then(msg => msg.delete({timeout:5000}));
             })
             .catch( () => {
-            console.log(`[INFO] [${time}]`, cyan(`${message.author.tag} n'a pas réussi a ajouté ${user.username} au ticket ${chan} !`));
+            console.log(`[INFO] [${time}]`, cyan(`${message.author.tag} n'a pas réussi à ajouté ${user.username} au ticket ${chan} !`));
             message.channel.send(`Impossible d'ajouter ${user.tag}`);
         });
     },
