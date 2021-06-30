@@ -1,0 +1,10 @@
+Embed normal : "00ffff"
+Erreurs : 1518332
+High Sanctions log (Ban / Kick) : 1518332
+Low Sanctions log (Avertissements) : "#ff8000"
+Channel Events : "#eab676"
+Emoji Events : "#873e23"
+Member Events : "#1FDE80"
+Msg Events : "#DED51F"
+Role Events : "#DE1FD5"
+
