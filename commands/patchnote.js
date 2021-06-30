@@ -16,7 +16,7 @@ module.exports = {
             fields: [
                 {
                     name: "<:moderation:847186161582735400> Optimisations :",
-                    value: "- Transformation du code dupliqué en fonctions\n- Retirait des déclarations inutiles\n- Multiples autres optimisations mineures.",
+                    value: "- Transformation du code dupliqué en fonctions\n- Retrait des déclarations inutiles\n- Multiples autres optimisations mineures.",
                     inline: false,
                 },
                 {
