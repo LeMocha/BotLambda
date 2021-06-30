@@ -5,30 +5,30 @@ module.exports = {
     description: 'Une réponse simple a toutes vos questions',
     args: false,
     guildOnly: false,
-    usage: "<votre question>",
+    aliases:['pc'],
+    usage: "",
     category: "fun",
     execute(message) {
+        message.delete()
+        
         rep = Math.random()
 
+        const embed = new Discord.MessageEmbed()
+            .setColor("00ffff")
+            .setFooter(`Lancé par ${message.author.username}`, message.author.avatarURL());
+
         if(rep >= 0.5){
-            const attachment = new Discord.MessageAttachment('./ressources/piece/pile.png');
-            const embed = new Discord.MessageEmbed()
-                .setColor(`F8C300`)
-                .setTitle('Pile !')
+            const attachment = new Discord.MessageAttachment('./images/piece/pile.png');
+            embed.setTitle('Pile !')
                 .attachFiles(attachment)
                 .setImage(`attachment://pile.png`)
-                .setFooter(`Commande de : ${message.author.username}`, message.author.avatarURL());
-            message.channel.send(embed)
         }
         else{
-            const attachment = new Discord.MessageAttachment('./ressources/piece/face.png');
-            const embed = new Discord.MessageEmbed()
-                .setColor(`F8C300`)
-                .setTitle('Face !')
+            const attachment = new Discord.MessageAttachment('./images/piece/face.png');
+            embed.setTitle('Face !')
                 .attachFiles(attachment)
                 .setImage(`attachment://face.png`)
-                .setFooter(`Commande de : ${message.author.username}`, message.author.avatarURL());
-            message.channel.send(embed)
         }
+        message.channel.send(embed)
     },
 };

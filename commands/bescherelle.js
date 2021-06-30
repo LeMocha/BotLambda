@@ -1,21 +1,30 @@
-const Discord = require("discord.js");
-
 module.exports = {
     name: "bescherelle",
     description: 'ATTAQUE BESCHERELLE !',
     args: false,
     guildOnly: false,
+    aliases: ['dico', 'dictionnaire'],
     usage: "",
     category: "fun",
     execute(message) {
-            message.delete();
-            const attachment = new Discord.MessageAttachment('./ressources/Attaque_Bescherelle.jpg');
-            const embed = new Discord.MessageEmbed()
-                .setTitle("**J'ai mal à mon Slawk...**")
-                .setColor(`RANDOM`)
-                .attachFiles(attachment)
-                .setImage(`attachment://Attaque_Bescherelle.jpg`)
-                .setFooter(`Commande de : ${message.author.username}`, message.author.avatarURL());
-            message.channel.send(embed)
+
+        message.delete();
+        
+        message.channel.send({
+            files: [{
+                attachment:"./images/Attaque_Bescherelle.jpg",
+            }],
+            embed: {
+                color:"00ffff",
+                title:"**J'ai mal à mon Slawk...**",
+                image: {
+                    url:"attachment://Attaque_Bescherelle.jpg",
+                },
+                footer: {
+                  text: `Lancé par ${message.author.username}`,
+                  icon_url: message.author.avatarURL(),
+                },
+            }
+        })
     },
 };

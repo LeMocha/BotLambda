@@ -1,5 +1,6 @@
 const { blue } = require("chalk");
 const { logTime } = require("../utils/utils");
+const guildId = "658437922256584725"
 
 module.exports = {
     name: 'ready',

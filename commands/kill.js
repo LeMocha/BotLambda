@@ -1,41 +1,80 @@
 const {getUserFromMention} = require("../utils/mentions");
-const {MessageEmbed} = require("discord.js");
 
 module.exports = {
     name: 'kill',
     description: 'Permet de tuer quelqu\'un ou de se suicider.',
     args: false,
     guildOnly: true,
+    aliases:[],
     usage: "<user>",
     category: "fun",
     execute(message, args, client) {
-      let Embed = new MessageEmbed
+      message.delete()
 
       if(args.length === 0){
-          Embed.setTitle(`${message.author.tag} se suicide (quel con) :`);
-          Embed.setImage("https://media.tenor.com/images/405fabaf6af376d244649c02795f01be/tenor.gif");
-          Embed.setColor(message.author.displayHexColor);
-          return message.channel.send(Embed);
+        return message.channel.send({
+          embed:{
+            color:"00ffff",
+            title:`${message.author.tag} se suicide (quel con) :`,
+            footer: {
+              text: `Lancé par ${message.author.username}`,
+              icon_url: message.author.avatarURL(),
+            },
+          },
+          image: {
+              url: 'https://media.tenor.com/images/405fabaf6af376d244649c02795f01be/tenor.gif',
+          },
+        })
       }
+
       let member = getUserFromMention(client, args[0])
       if(member === undefined) {
-          member = message.guild.members.cache.get(args[0])
+        member = message.guild.members.cache.get(args[0])
       }
+
       if(member === undefined) {
-          Embed.setTitle(`Le Bot Lambda est décédé... Il n'a pas su trouvé qui tu voulais tuer...`);
-          Embed.setImage("https://i.makeagif.com/media/5-13-2016/UpuRDK.gif");
-          return message.channel.send(Embed);
+          return message.channel.send({
+            embed:{
+              color:"00ffff",
+              title:`Le Bot Lambda est décédé... Il n'a pas su trouvé qui tu voulais tuer...`,
+              footer: {
+                text: `Lancé par ${message.author.username}`,
+                icon_url: message.author.avatarURL(),
+            },
+            },
+            image: {
+                url: 'https://i.makeagif.com/media/5-13-2016/UpuRDK.gif',
+            },
+          })
       } else {
           if(member.id === message.author.id) {
-              Embed.setTitle(`${message.author.tag} se suicide (quel con) :`);
-              Embed.setImage("https://media.tenor.com/images/405fabaf6af376d244649c02795f01be/tenor.gif");
-              Embed.setColor(message.author.displayHexColor);
-              return message.channel.send(Embed);
+              return message.channel.send({
+                embed:{
+                  color:"00ffff",
+                  title:`${message.author.tag} se suicide (quel con) :`,
+                  footer: {
+                    text: `Lancé par ${message.author.username}`,
+                    icon_url: message.author.avatarURL(),
+                },
+                },
+                image: {
+                    url: 'https://media.tenor.com/images/405fabaf6af376d244649c02795f01be/tenor.gif',
+                },
+              })
           }
-        Embed.setTitle(`${message.author.tag} à écourté la vie de ${client.users.cache.get(member.id).tag} :`);
-        Embed.setImage("https://data.photofunky.net/output/image/e/7/b/5/e7b5c3/photofunky.gif");
-        Embed.setColor(member.displayHexColor);
-        return message.channel.send(Embed);
+          return message.channel.send({
+            embed:{
+              color:"00ffff",
+              title:`${message.author.tag} à écourté la vie de ${client.users.cache.get(member.id).tag} :`,
+              footer: {
+                text: `Lancé par ${message.author.username}`,
+                icon_url: message.author.avatarURL(),
+            },
+            },
+            image: {
+                url: 'https://data.photofunky.net/output/image/e/7/b/5/e7b5c3/photofunky.gif',
+            },
+          })
       }
 
     },

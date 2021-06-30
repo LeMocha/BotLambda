@@ -5,16 +5,17 @@ module.exports = {
     description: 'Un petit gif pour amuser la galerie.',
     args: false,
     guildOnly: false,
+    aliases:['rgd'],
     usage: "",
     category: "fun",
     execute(message) {
             message.delete();
-            const attachment = new Discord.MessageAttachment('./ressources/rigodrole.jpg');
+            const attachment = new Discord.MessageAttachment('./images/rigodrole.jpg');
             const embed = new Discord.MessageEmbed()
-                .setColor(`RANDOM`)
+                .setColor("00ffff")
                 .attachFiles(attachment)
                 .setImage(`attachment://rigodrole.jpg`)
-                .setFooter(`Commande de : ${message.author.username}`, message.author.avatarURL());
+                .setFooter(`Lancé par ${message.author.username}`, message.author.avatarURL());
             message.channel.send(embed)
     },
 };

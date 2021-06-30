@@ -5,15 +5,18 @@ module.exports = {
     description: 'Permet d\'obtenir la liste de toutes les commandes ou d\'une commande en particulier.',
     args: false,
     guildOnly: false,
+    aliases:['h'],
     category: "information",
-    usage: "[commande]",
+    usage: "<commande>",
     execute(message, args) {
         const { prefix } = message.client.config;
         const { commands } = message.client;
+        
         const embed = new MessageEmbed()
             .setFooter(message.client.user.username, message.client.user.avatarURL())
             .setTimestamp()
-            .setColor("00ffff");
+            .setColor("00ffff")
+            .setFooter(`Lancé par ${message.author.username}`, message.author.avatarURL());
 
         if (!args.length) {
             embed.setTitle('Voici la liste de toutes mes commandes :')
@@ -22,6 +25,7 @@ module.exports = {
             let utils = "";
             let music = "";
             let info = "";
+            let lvl = "";
             let moderation = "";
             let fun = "";
             commands.forEach(command => {
@@ -37,6 +41,9 @@ module.exports = {
                 if(command.category === "information"){
                     info += `**${prefix}${command.name} :** ${command.description}\n`;
                 }
+                if(command.category === "levels"){
+                    lvl += `**${prefix}${command.name} :** ${command.description}\n`;
+                }
                 if(command.category === "moderation"){
                     moderation += `**${prefix}${command.name} :** ${command.description}\n`;
                 }
@@ -44,12 +51,13 @@ module.exports = {
                     fun += `, **${prefix}${command.name}**`;
                 }
             });
-            if(ticket !== "") embed.addField("🎫  Ticket :", ticket, false);
-            if(music !== "") embed.addField("🎧  Musique :", music, false);
-            if(info !== "") embed.addField("📌  Informations :", info, false);
-            if(utils !== "") embed.addField("⚒️  Utilitaires :", utils, false);
-            if(moderation !== "") embed.addField("⚡  Modération :", moderation, false);
-            if(fun !== "") embed.addField("🎉  Fun :", fun.slice(2), false);
+            ticket == "" || embed.addField(":ticket:  Ticket :", ticket, false);
+            music == "" || embed.addField(":headphones:  Musique :", music, false);
+            info == "" || embed.addField(":pushpin:  Informations :", info, false);
+            lvl == "" || embed.addField("👑  Niveaux :", info, false);
+            utils == "" || embed.addField(":hammer_pick:  Utilitaires :", utils, false);
+            moderation == "" || embed.addField(":zap:  Modération :", moderation, false);
+            fun == "" || embed.addField(":tada:  Fun :", fun.slice(2), false);
             return message.channel.send(embed);
         }
 
@@ -61,9 +69,9 @@ module.exports = {
         }
         embed.addField(`✏️  **Nom :**`, `${command.name.charAt(0).toUpperCase() + command.name.slice(1)}`);
 
-        if (command.description) embed.addField(`📋  **Description :**`,`${command.description}`);
-        embed.addField(`🔧  **Utilisation :**`,`${prefix}${command.name} ${command.usage}`);
-        if(command.category) embed.addField(`🔗  Catégorie :`, `${command.category.charAt(0).toUpperCase() + command.category.slice(1)}`);
+        if (command.description) embed.addField(`<:Information:847181190486294548>  **Description :**`,`${command.description}`);
+        embed.addField(`<:cle:847201672413315093>  **Utilisation :**`,`${prefix}${command.name} ${command.usage}`);
+        if(command.category) embed.addField(`<:lien:847195607873093662>  Catégorie :`, `${command.category.charAt(0).toUpperCase() + command.category.slice(1)}`);
 
         message.channel.send(embed);
     },

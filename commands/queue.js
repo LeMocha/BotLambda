@@ -1,21 +1,31 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: 'queue',
     description: 'Permet d\'avoir la liste des musiques en file d\'attente',
     args: false,
     guildOnly: true,
+    aliases: ['q'],
     usage: "",
     category: "musique",
     execute(message) {
+        message.delete()
+        
         const { queue } = message.client;
         const serverQueue = queue.get(message.guild.id);
-        if(!serverQueue) return message.channel.send("La file d'attente est vide !").then(msg => msg.delete({timeout:5000}));
-        const embed = new Discord.MessageEmbed()
-            .setFooter(message.client.user.username, message.client.user.avatarURL())
+        if(!serverQueue) return message.channel.send({
+            embed : {
+                type: "rich",
+                color: 16763981,
+                description: "**:warning: La fille d'attente est vide !**",
+                timestamp: new Date(),
+            }}).then(msg => msg.delete({timeout:5000}));
+
+        const embed = new MessageEmbed()
             .setTimestamp()
-            .setTitle(`La liste de toute les musiques en file d'attente`)
-            .setColor("00ffff");
+            .setTitle(`<:playlist:847181191089618985> La liste de toute les musiques en file d'attente`)
+            .setColor("00ffff")
+            .setFooter(`Lancé par ${message.author.username}`, message.author.avatarURL());
 
         let songs = "";
         let i = 0;
@@ -28,6 +38,9 @@ module.exports = {
                 i++
             }
         });
+        if(i === 1){
+            songs += `Aucun titre en file d'attente.`
+        }
         embed.setDescription(songs);
         message.channel.send(embed);
     },

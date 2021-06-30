@@ -1,39 +1,54 @@
-const Discord = require("discord.js");
-
 module.exports = {
   name: "ping",
   description: 'Donne le ping entre moi et Discord',
   args: false,
   guildOnly: false,
+  aliases:[],
   usage: "",
   category: "information",
-  execute(message) {
+  execute(message, {}, client) {
+    message.delete()
+    
     if (Math.random() <= 0.01) {
-      const embed = new Discord.MessageEmbed()
-      .setTitle("🔥 Oh ! Un hacker lambda a modifié mon code !")
-      .setImage("https://i.gifer.com/XYkc.gif")
-      message.channel.send(embed)
-    }
-    else {
-      message.channel.send(`🏓 Calcul en cours...`).then((msg) => {
-        var p = (Math.floor(msg.createdTimestamp - message.createdTimestamp))
-
-        const e = new Discord.MessageEmbed()
-          .setTitle("🏓 Pong !")
-          .setDescription(`Mon ping est de : ${p}ms`);
-
-        if (p <= 100) {
-          e.setColor("00D166");
-        } else if (p > 100 && p <= 250) {
-          e.setColor("F8C300");
-        } else {
-          e.setColor("F93A2F");
+      message.channel.send({
+          embed: {
+            color: "00ffff",
+            title: "🔥 Oh ! Un hacker lambda a modifié mon code !",
+            image: {
+                url: "https://i.gifer.com/XYkc.gif",
+            },
+            timestamp: new Date(),
+            footer: {
+                text: `Lancé par ${message.author.username}`,
+                icon_url: message.author.avatarURL(),
+            },
         }
+      })
 
-        msg.edit(e);
-        msg.edit("\u200B");
-        return;
-      });
+    } else {
+
+      let p = client.ws.ping
+
+      let color = ''
+
+      if (p <= 100) {
+          color = "00D166"
+      } else if (p > 100 && p <= 250) {
+          color = "F8C300"
+      } else {
+          color = "F93A2F"
+      }
+
+      message.channel.send({
+        color: color,
+        title: '<:pong:847181191471693835> Pong !',
+        description: `Mon ping est de : ${p}ms`,
+        timestamp: new Date(),
+        footer: {
+          text: `Lancé par ${message.author.username}`,
+          icon_url: message.author.avatarURL(),
+        },
+      })
     }
 
   },

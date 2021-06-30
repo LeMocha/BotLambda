@@ -1,11 +1,10 @@
-const Discord = require('discord.js');
-
 module.exports = {
     name: 'vaporwave',
     description: 'Pour écrire un texte autrement x)',
     args: true,
     guildOnly: false,
-    usage: "<texte que tu veux me faire dire>",
+    aliases:['vpw'],
+    usage: "<message>",
     category: "fun",
     execute(message, args) {
         
@@ -21,10 +20,14 @@ module.exports = {
             text = text.split(char).join(wide[i]);
         }
 
-        const embed = new Discord.MessageEmbed()
-            .setFooter(`${message.author.username}`, message.author.avatarURL())
-            .setDescription(text)
-            .setColor("00ffff");
-        return message.channel.send(embed)
+        return message.channel.send({embed: {
+            color: "00ffff",
+            description: text,
+            timestamp: new Date(),
+            footer: {
+                text: `Lancé par ${message.author.username}`,
+                icon_url: message.client.user.avatarURL(),
+            },
+        }})
     },
 };
