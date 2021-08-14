@@ -42,4 +42,6 @@ Le fichier de configuration doit se trouver dans la racine du bot et se nommer c
 }
 ```
 # Modèle de la base de données.
-ID de l'utilisateur (ID) | Averto [0 | 1 | 2] (averto) | Rôles Optionnels [{"dev":0|1,"mosping":0|1,"aideinfo":0|1,"pinglive":0|1}] (optrol) | Grades [0 | 1 | 2] (grd) | rank | lvl | xp
+| ID           | averto      | optrol                                          | grd         | rank | lvl | xp |
+|--------------|-------------|-------------------------------------------------|-------------|------|-----|----|
+| ID du membre | 0 \| 1 \| 2 | {"dev":0,"mosping":0,"aideinfo":0,"pinglive":0} | 0 \| 1 \| 2 | 0    | 0   | 0  |
