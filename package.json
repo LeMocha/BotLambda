@@ -1,34 +1,15 @@
 {
   "name": "botlambda",
-  "version": "1.3.0",
-  "description": "Le bot fait par Le Mocha pour le serveur de TechLambda",
-  "main": "bot.js",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon .",
-    "start": "node ."
+    "test": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LeMocha/BotLambda"
-  },
-  "keywords": [],
-  "author": "Le Mocha",
-  "license": "MIT",
+  "author": "Le_Mocha",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@angular/cli": "latest",
-    "@discordjs/opus": "latest",
-    "chalk": "latest",
-    "discord-buttons": "^3.2.1",
-    "discord.js": "^12.5.3",
-    "ffmpeg": "latest",
-    "ffmpeg-static": "latest",
-    "fs": "0.0.1-security",
-    "i": "^0.3.6",
-    "moment": "latest",
-    "npm": "latest",
-    "opusscript": "0.0.8",
-    "simple-youtube-api": "latest",
-    "youtube-api": "latest",
-    "ytdl-core": "^4.8.3"
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1"
   }
 }
